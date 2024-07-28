@@ -21,6 +21,36 @@ jobs:
         chmod +x ./start.sh
         ./start.sh
       
+    - name: Check for required files
+      run: |
+        required_files=(
+          "agent-freebsd_amd64"
+          "agent-linux_amd64"
+          "agent-linux_arm64"
+          "board-linux-amd64"
+          "board-linux-arm64"
+          "cff-linux-amd64"
+          "cff-linux-arm64"
+          "web-freebsd-amd64"
+          "web-linux-amd64"
+          "web-linux-arm64"
+        )
+        
+        missing_files=0
+        for file in "${required_files[@]}"; do
+          if [ ! -f "./download/$file" ]; then
+            echo "Missing file: $file"
+            missing_files=$((missing_files + 1))
+          fi
+        done
+        
+        if [ $missing_files -gt 0 ]; then
+          echo "Error: $missing_files required files are missing. Aborting release."
+          exit 1
+        fi
+        
+        echo "All required files are present. Proceeding with release."
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
