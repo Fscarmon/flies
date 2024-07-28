@@ -28,7 +28,7 @@ for platform in "${PLATFORMS[@]}"; do
        
     # 解压缩并处理 dist 文件夹中的文件
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
-    mv "./nezha-panel-$platform/dist/dashboard-$platform" "./dashboard-$platform"
+    mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform"
     rm -rf  "nezha-panel-$platform.zip"
     
@@ -41,7 +41,7 @@ for platfor in "${PLATFORM[@]}"; do
     # 解压缩并处理 dist 文件夹中的文件
 
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
-    mv "nezha-agent" "nezha-agent-$platfor"
+    mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
    
 done
@@ -58,7 +58,7 @@ if [ -n "$XRAY_VERSION" ]; then
         esac
         wget -q -O "Xray-$platform.zip" "https://github.com/XTLS/Xray-core/releases/download/${XRAY_VERSION}/Xray-$XRAY_PLATFORM.zip"
         unzip -j "Xray-$platform.zip" "xray" -d "."
-        mv "xray" "xray-$platform"
+        mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
 else
@@ -74,8 +74,8 @@ for platform in "${PLATFORMS[@]}"; do
         "freebsd-amd64" | "freebsd_amd64") CF_PLATFORM="amd64";;
         "freebsd-arm64" | "freebsd_arm64") CF_PLATFORM="arm64";;
     esac
-    wget -q -O "cloudflared-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
-    chmod +x "cloudflared-$platform"
+    wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
+    chmod +x "cff-$platform"
 done
 
 # 删除所有非执行文件
