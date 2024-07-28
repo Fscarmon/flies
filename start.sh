@@ -29,11 +29,11 @@ for platform in "${PLATFORMS[@]}"; do
     
     # 解压缩并处理 dist 文件夹中的文件
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
-    mv "nezha-panel-$platform/dist/dashboard-$platform" "dashboard-$platform"
-    rm -r "nezha-panel-$platform"
-    
+    mv "./nezha-panel-$platform/dist/dashboard-$platform" "dashboard-$platform"
+    rm -rf "./nezha-panel-$platform"
+    rm -rf  "nezha-panel-$platform.zip"
     unzip -o "nezha-agent-$platform.zip" -d "nezha-agent-$platform"
-    mv "nezha-panel-$platform/nezha-agent-$platform" "nezha-agent-$platform"
+    mv "./nezha-panel-$platform/nezha-agent-$platform" "nezha-agent-$platform"
     rm "nezha-agent-$platform.zip"
 done
 
