@@ -40,7 +40,7 @@ for platform in "${PLATFORMS2[@]}"; do
     
     # 解压缩并处理 dist 文件夹中的文件
     unzip -o "nezha-agent-$platform.zip" -d "nezha-agent-$platform"
-    mv "./nezha-panel-$platform/nezha-agent-$platform" "nezha-agent-$platform"
+    mv "./nezha-panel-$platform/nezha-agent" "nezha-agent-$platform"
     rm "nezha-agent-$platform.zip"
     rm -rf "./nezha-agent-$platform"
 done
