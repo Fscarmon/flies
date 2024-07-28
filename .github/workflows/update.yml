@@ -30,26 +30,24 @@ jobs:
         draft: false
         prerelease: false
         
-    - name: Install jq
+    - name: Install jq and file
       run: |
-        if ! command -v jq &> /dev/null
-        then
-          echo "jq not found, installing..."
-          sudo apt-get update
-          sudo apt-get install -y jq
-        else
-          echo "jq is already installed"
-        fi
+        sudo apt-get update
+        sudo apt-get install -y jq file
         
     - name: Upload Release Assets
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        UPLOAD_URL: ${{ steps.create_release.outputs.upload_url }}
       run: |
         set -x
-        assets_url=$(echo '${{ steps.create_release.outputs.upload_url }}' | sed -e "s/{?name,label}//g")
+        assets_url=$(echo "$UPLOAD_URL" | sed -e "s/{?name,label}//g")
         for asset in ./download/*; do
           filename=$(basename "$asset")
           encoded_filename=$(printf %s "$filename" | jq -sRr @uri)
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-               -H "Content-Type: $(file -b --mime-type "$asset")" \
+          mime_type=$(file -b --mime-type "$asset")
+          curl -H "Authorization: token $GITHUB_TOKEN" \
+               -H "Content-Type: $mime_type" \
                --data-binary @"$asset" \
                "${assets_url}?name=${encoded_filename}"
         done
