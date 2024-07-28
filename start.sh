@@ -18,7 +18,7 @@ mkdir -p download
 cd download
 
 # 定义版本和平台
-PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64" "freebsd-arm64" "linux_amd64" "linux_arm64" "freebsd_amd64" "freebsd_arm64")
+PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64" "linux_amd64" "linux_arm64" "freebsd_amd64")
 
 # 下载并解压哪吒面板和客户端
 for platform in "${PLATFORMS[@]}"; do
@@ -29,10 +29,11 @@ for platform in "${PLATFORMS[@]}"; do
     
     # 解压缩并处理 dist 文件夹中的文件
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
-    mv "nezha-panel-$platform/dist/"* "dashboard-$platform"
+    mv "nezha-panel-$platform/dist/dashboard-$platform" "dashboard-$platform"
     rm -r "nezha-panel-$platform"
     
     unzip -o "nezha-agent-$platform.zip" -d "nezha-agent-$platform"
+    mv "nezha-panel-$platform/nezha-agent-$platform" "nezha-agent-$platform"
     rm "nezha-agent-$platform.zip"
 done
 
