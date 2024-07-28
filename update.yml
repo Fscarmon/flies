@@ -1,0 +1,55 @@
+name: Run Script and Release
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 20 * * *'  # 每天 UTC 20:00, 即北京时间凌晨 4:00
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run start.sh
+      run: |
+        chmod +x ./start.sh
+        ./start.sh
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release-${{ github.run_number }}
+        release_name: Release ${{ github.run_number }}
+        draft: false
+        prerelease: false
+        
+    - name: Install jq
+      run: |
+        if ! command -v jq &> /dev/null
+        then
+          echo "jq not found, installing..."
+          sudo apt-get update
+          sudo apt-get install -y jq
+        else
+          echo "jq is already installed"
+        fi
+        
+    - name: Upload Release Assets
+      run: |
+        set -x
+        assets_url=$(echo '${{ steps.create_release.outputs.upload_url }}' | sed -e "s/{?name,label}//g")
+        for asset in ./download/*; do
+          filename=$(basename "$asset")
+          encoded_filename=$(printf %s "$filename" | jq -sRr @uri)
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Content-Type: $(file -b --mime-type "$asset")" \
+               --data-binary @"$asset" \
+               "${assets_url}?name=${encoded_filename}"
+        done
