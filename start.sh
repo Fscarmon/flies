@@ -19,7 +19,7 @@ cd download
 
 # 定义版本和平台
 PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64")
-PLATFORMS2=("linux_amd64" "linux_arm64" "freebsd_amd64")
+PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 # 下载并解压哪吒面板和客户端
 for platform in "${PLATFORMS[@]}"; do
     echo "Processing Nezha for $platform..."
@@ -33,16 +33,17 @@ for platform in "${PLATFORMS[@]}"; do
     rm -rf  "nezha-panel-$platform.zip"
     
 done
-for platform in "${PLATFORMS2[@]}"; do
-    echo "Processing Nezha for $platform..."
+for platfor in "${PLATFORM[@]}"; do
+    echo "Processing Nezha for $platfor..."
 
-    wget -q -O "nezha-agent-$platform.zip" "https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_$platform.zip"
+    wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_$platfor.zip"
     
     # 解压缩并处理 dist 文件夹中的文件
-    unzip -o "nezha-agent-$platform.zip" -d "nezha-agent-$platform"
-    mv "./nezha-panel-$platform/nezha-agent" "nezha-agent-$platform"
-    rm "nezha-agent-$platform.zip"
-    rm -rf "./nezha-agent-$platform"
+
+    unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
+    mv "nezha-agent" "nezha-agent-$platfor"
+    rm "nezha-agent-$platfor.zip"
+   
 done
 # 下载 Xray
 echo "Downloading Xray..."
