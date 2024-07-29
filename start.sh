@@ -46,7 +46,7 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
     
 done
-touch "nezha-agent-${nez_ver}.log"
+echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
 # 下载 Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
@@ -61,7 +61,7 @@ if [ -n "$XRAY_VERSION" ]; then
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
-    touch "Xray-${nez_ver}.log"
+    echo "Xray-${nez_ver}" > "Xray-${nez_ver}.log"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
