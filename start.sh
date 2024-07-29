@@ -46,7 +46,7 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
     
 done
-touch "nezha-agent-${nez_ver}"
+touch "nezha-agent-${nez_ver}.log"
 # 下载 Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
@@ -61,7 +61,7 @@ if [ -n "$XRAY_VERSION" ]; then
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
-    touch "Xray-${nez_ver}"
+    touch "Xray-${nez_ver}.log"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
@@ -80,6 +80,6 @@ for platform in "${PLATFORMS[@]}"; do
 done
 
 # 删除所有非执行文件
-find . -type f ! -executable -delete
-
-echo "Done. All executable files are in the 'download' directory."
+# 删除所有非执行文件，但保留.log文件
+find . -type f ! -executable ! -name "*.log" -delete
+echo "Done. All executable files and .log files are in the 'download' directory."
