@@ -1,5 +1,5 @@
 #!/bin/bash
-nez_ver ="v0.18.2"
+nez_ver="v0.18.2"
 # 检查并安装必要的工具
 check_install() {
     if ! command -v $1 &> /dev/null; then
