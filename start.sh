@@ -1,5 +1,6 @@
 #!/bin/bash
-nez_ver="v0.18.2"
+nez_ver ="v0.18.2"
+XRAY_VERSION="v1.8.23"
 # 检查并安装必要的工具
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -43,24 +44,24 @@ for platfor in "${PLATFORM[@]}"; do
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
-    touch "nezha-agent-${nez_ver}"
+    
 done
+touch "nezha-agent-${nez_ver}"
 # 下载 Xray
 echo "Downloading Xray..."
-XRAY_VERSION=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | grep tag_name | cut -d '"' -f 4)
 if [ -n "$XRAY_VERSION" ]; then
     for platform in "${PLATFORMS[@]}"; do
         case $platform in
             "linux-amd64" | "linux_amd64") XRAY_PLATFORM="linux-64";;
             "linux-arm64" | "linux_arm64") XRAY_PLATFORM="linux-arm64-v8a";;
             "freebsd-amd64" | "freebsd_amd64") XRAY_PLATFORM="freebsd-64";;
-            "freebsd-arm64" | "freebsd_arm64") XRAY_PLATFORM="freebsd-arm64";;
         esac
         wget -q -O "Xray-$platform.zip" "https://github.com/XTLS/Xray-core/releases/download/${XRAY_VERSION}/Xray-$XRAY_PLATFORM.zip"
         unzip -j "Xray-$platform.zip" "xray" -d "."
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
+    touch "Xray-${nez_ver}"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
