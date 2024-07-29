@@ -61,7 +61,7 @@ if [ -n "$XRAY_VERSION" ]; then
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
-    echo "Xray-${nez_ver}" > "Xray-${nez_ver}.log"
+    echo "Xray-${XRAY_VERSION}" > "Xray-${XRAY_VERSION}.log"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
