@@ -1,5 +1,5 @@
 #!/bin/bash
-
+nez_ver ="v0.18.2"
 # 检查并安装必要的工具
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -36,14 +36,14 @@ done
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha for $platfor..."
 
-    wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_$platfor.zip"
+    wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     
     # 解压缩并处理 dist 文件夹中的文件
 
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
-   
+    touch "nezha-agent-${nez_ver}"
 done
 # 下载 Xray
 echo "Downloading Xray..."
