@@ -1,5 +1,6 @@
 #!/bin/bash
 nez_ver="v0.18.2"
+nezboard_ver="v0.18.2"
 XRAY_VERSION="v1.8.23"
 
 # Check and install necessary tools
@@ -28,7 +29,7 @@ PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 for platform in "${PLATFORMS[@]}"; do
     echo "Processing Nezha panel for $platform..."
 
-    wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/latest/download/dashboard-$platform.zip"
+    wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
@@ -78,7 +79,7 @@ done
 # Compress binaries with UPX
 echo "Compressing binaries with UPX..."
 for file in board-* agent-* web-* cff-*; do
-    upx -3 "$file" -o "${file}-3"
+    upx -3 "$file" -o "${file}-up3"
 done
 
 # Delete all non-executable files but keep .log files
