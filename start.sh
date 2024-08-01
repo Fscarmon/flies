@@ -1,5 +1,5 @@
 #!/bin/bash
-nez_ver="v0.18.2"
+nez_ver="v0.18.12"
 nezboard_ver="v0.18.2"
 XRAY_VERSION="v1.8.23"
 
