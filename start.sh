@@ -37,7 +37,7 @@ for platform in "${PLATFORMS[@]}"; do
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
 done
-
+echo "sing-box-${SB_VERSION}" > sing-box-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
 
@@ -81,7 +81,7 @@ done
 
 # Compress binaries with UPX
 echo "Compressing binaries with UPX..."
-for file in board-* agent-* web-* cff-*; do
+for file in board-* sb-* agent-* web-* cff-*; do
     upx -3 "$file" -o "${file}-up3"
 done
 
