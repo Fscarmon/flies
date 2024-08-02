@@ -30,6 +30,8 @@ jobs:
           "web-freebsd-amd64"
           "web-linux-amd64"
           "web-linux-arm64"
+          "sb-linux-amd64"
+          "sb-linux-arm64"
         )
         
         missing_files=0
