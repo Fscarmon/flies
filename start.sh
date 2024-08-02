@@ -2,7 +2,7 @@
 nez_ver="v0.18.2"
 nezboard_ver="v0.18.2"
 XRAY_VERSION="v1.8.23"
-
+SB_VERSION="1.10.0-alpha.28"
 # Check and install necessary tools
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -24,11 +24,14 @@ cd download
 # Define versions and platforms
 PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64")
 PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
-
 # Download and extract Nezha panel and client
 for platform in "${PLATFORMS[@]}"; do
     echo "Processing Nezha panel for $platform..."
-
+    wget -q -O "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
+    tar -xzvf "sb-$platform.tar.gz" -C "sb-$platform"
+    mv "sb-$platform/sing-box" "./sb-$platform"
+    rm "sb-$platform.tar.gz"
+    
     wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
