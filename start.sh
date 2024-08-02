@@ -27,9 +27,9 @@ PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 # Download and extract Nezha panel and client
 for platform in "${PLATFORMS[@]}"; do
     echo "Processing Nezha panel for $platform..."
-    wget -q -O "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
-    tar -xzvf "sb-$platform.tar.gz" -C "sb-$platform"
-    mv "sb-$platform/sing-box" "./sb-$platform"
+    curl -sLo "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
+    tar -xzvf "sb-$platform.tar.gz" -C "./"
+    mv "./sing-box-${SB_VERSION}-$platform/sing-box" "./sb-$platform"
     rm "sb-$platform.tar.gz"
     
     wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
