@@ -32,6 +32,8 @@ jobs:
           "web-linux-arm64"
           "sb-linux-amd64"
           "sb-linux-arm64"
+          "board-linux-amd64"
+          "board-linux-arm64"
         )
         
         missing_files=0
