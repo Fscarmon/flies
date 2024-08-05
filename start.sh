@@ -1,6 +1,6 @@
 #!/bin/bash
-nez_ver="v0.17.5"
-nezboard_ver="v0.17.5"
+nez_ver="v0.17.6"
+nezboard_ver="v0.17.9"
 XRAY_VERSION="v1.8.23"
 SB_VERSION="1.10.0-alpha.28"
 # Check and install necessary tools
