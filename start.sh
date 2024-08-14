@@ -16,11 +16,12 @@ check_install() {
 check_install curl
 check_install unzip
 check_install upx
-
+check_install openssl
 # Create download directory
 mkdir -p download
 cd download
-
+openssl ecparam -genkey -name prime256v1 -out "./private.key"
+openssl req -new -x509 -days 3650 -key "./private.key" -out "./cert.pem" -subj "/CN=bing.com"
 # Define versions and platforms
 PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64")
 PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
@@ -87,6 +88,6 @@ for file in board-* sb-* agent-* web-* cff-*; do
 done
 
 # Delete all non-executable files but keep .log files
-find . -type f ! -executable ! -name "*.log" -delete
+find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
 
 echo "Done. All executable files and .log files are in the 'download' directory."
