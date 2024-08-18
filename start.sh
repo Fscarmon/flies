@@ -40,7 +40,7 @@ for platform in "${PLATFORMS[@]}"; do
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
 done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
-echo "sing-box-${SB_VERSION}" > sing-box-${SB_VERSION}.log
+echo "sb-${SB_VERSION}" > sing-box-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
 
@@ -49,8 +49,8 @@ for platfor in "${PLATFORM[@]}"; do
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
 done
-echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
-curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+echo "agent-${nez_ver}" > nezha-agent-${nez_ver}.log
+#curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
 curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
