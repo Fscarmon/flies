@@ -50,8 +50,8 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
 done
 echo "agent-${nez_ver}" > nezha-agent-${nez_ver}.log
-#curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
-curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
+curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+#curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
