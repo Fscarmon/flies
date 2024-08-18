@@ -50,7 +50,7 @@ for platfor in "${PLATFORM[@]}"; do
 done
 echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
 curl -sSL -o "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
-curl -sSL -o "cff-freebsd-amd64" "https://github.com/dsadsadsss/1/releases/download/xry/argo-bsdamd"
+curl -sSL -o "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
