@@ -27,7 +27,7 @@ jobs:
           "agent-linux_arm64"
           "cff-linux-amd64"
           "cff-linux-arm64"
-          "sb-freebsd-amd64"
+          "cff-freebsd-amd64"
           "web-freebsd-amd64"
           "web-linux-amd64"
           "web-linux-arm64"
