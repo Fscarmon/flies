@@ -50,6 +50,7 @@ for platfor in "${PLATFORM[@]}"; do
 done
 echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
 curl -sSL -o "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+curl -sSL -o "cff-freebsd-amd64" "https://github.com/dsadsadsss/1/releases/download/xry/argo-bsdamd"
 # Download Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
@@ -82,12 +83,12 @@ for platform in "${PLATFORMS[@]}"; do
 done
 
 # Compress binaries with UPX
-echo "Compressing binaries with UPX..."
-for file in board-* sb-* agent-* web-* cff-*; do
+#echo "Compressing binaries with UPX..."
+#for file in board-* sb-* agent-* web-* cff-*; do
     upx -3 "$file" -o "${file}-up3"
-done
+#done
 
 # Delete all non-executable files but keep .log files
-find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
+#find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
 
 echo "Done. All executable files and .log files are in the 'download' directory."
