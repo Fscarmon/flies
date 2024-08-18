@@ -40,7 +40,7 @@ for platform in "${PLATFORMS[@]}"; do
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
 done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
-echo "sb-${SB_VERSION}" > sing-box-${SB_VERSION}.log
+echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
 
@@ -49,7 +49,7 @@ for platfor in "${PLATFORM[@]}"; do
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
 done
-echo "agent-${nez_ver}" > nezha-agent-${nez_ver}.log
+echo "agent-${nez_ver}" > agent-${nez_ver}.log
 curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
 #curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
@@ -66,7 +66,7 @@ if [ -n "$XRAY_VERSION" ]; then
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
-    echo "Xray-${XRAY_VERSION}" > "Xray-${XRAY_VERSION}.log"
+    echo "Xray-${XRAY_VERSION}" > "web-${XRAY_VERSION}.log"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
@@ -81,6 +81,37 @@ for platform in "${PLATFORMS[@]}"; do
     esac
     wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
     chmod +x "cff-$platform"
+done
+curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
+files=(
+          "agent-freebsd_amd64"
+          "agent-linux_amd64"
+          "agent-linux_arm64"
+          "cff-linux-amd64"
+          "cff-linux-arm64"
+          "cff-freebsd-amd64"
+          "web-freebsd-amd64"
+          "web-linux-amd64"
+          "web-linux-arm64"
+          "sb-linux-amd64"
+          "sb-linux-arm64"
+          "sb-freebsd-amd64"
+          "board-linux-amd64"
+          "board-linux-arm64"
+)
+
+# 循环检查每个文件
+for file_path in "${files[@]}"; do
+    if [ -f "$file_path" ]; then
+        if [ ! -s "$file_path" ]; then
+            rm "$file_path"
+            echo "文件 '$file_path' 已删除，因为它是空的。"
+        else
+            echo "文件 '$file_path' 存在且不为空。"
+        fi
+    else
+        echo "文件 '$file_path' 不存在。"
+    fi
 done
 
 # Compress binaries with UPX
