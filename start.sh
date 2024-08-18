@@ -15,7 +15,7 @@ check_install() {
 
 check_install curl
 check_install unzip
-check_install upx
+#check_install upx
 check_install openssl
 # Create download directory
 mkdir -p download
@@ -85,10 +85,10 @@ done
 # Compress binaries with UPX
 #echo "Compressing binaries with UPX..."
 #for file in board-* sb-* agent-* web-* cff-*; do
-    upx -3 "$file" -o "${file}-up3"
+  #  upx -3 "$file" -o "${file}-up3"
 #done
 
 # Delete all non-executable files but keep .log files
 #find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
 
-echo "Done. All executable files and .log files are in the 'download' directory."
+#echo "Done. All executable files and .log files are in the 'download' directory."
