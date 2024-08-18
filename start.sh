@@ -49,7 +49,7 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
 done
 echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
-
+curl -sLo "sb-freebsd" "https://github.com/dsadsadsss/1/releases/download/xry/default.sinbox-freebsd"
 # Download Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
