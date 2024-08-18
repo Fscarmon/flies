@@ -14,6 +14,7 @@ check_install() {
 }
 
 check_install curl
+check_install wget
 check_install unzip
 #check_install upx
 check_install openssl
@@ -38,7 +39,7 @@ for platform in "${PLATFORMS[@]}"; do
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
 done
-# echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
+echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sing-box-${SB_VERSION}" > sing-box-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
@@ -49,8 +50,8 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
 done
 echo "nezha-agent-${nez_ver}" > nezha-agent-${nez_ver}.log
-curl -sSL -o "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
-curl -sSL -o "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
+curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
 if [ -n "$XRAY_VERSION" ]; then
@@ -65,7 +66,7 @@ if [ -n "$XRAY_VERSION" ]; then
         mv "xray" "web-$platform"
         rm "Xray-$platform.zip"
     done
-    #echo "Xray-${XRAY_VERSION}" > "Xray-${XRAY_VERSION}.log"
+    echo "Xray-${XRAY_VERSION}" > "Xray-${XRAY_VERSION}.log"
 else
     echo "Failed to get Xray version, skipping Xray download."
 fi
