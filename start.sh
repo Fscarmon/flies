@@ -3,6 +3,7 @@ nez_ver="v0.15.5"
 nezboard_ver="v0.17.8"
 XRAY_VERSION="v1.8.23"
 SB_VERSION="1.10.0-alpha.28"
+gost_ver="3.0.0-rc10"
 # Check and install necessary tools
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -43,7 +44,7 @@ echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
-    curl -sLo "gost-$platfor.tar.gz" "https://github.com/go-gost/gost/releases/download/v3.0.0-rc10/gost_3.0.0-rc10_$platfor.tar.gz"
+    curl -sLo "gost-$platfor.tar.gz" "https://github.com/go-gost/gost/releases/download/v${gost_ver}/gost_${gost_ver}_$platfor.tar.gz"
     tar -xzvf "gost-$platfor.tar.gz"
     mv "gost" "gost-$platfor"
     rm "gost-$platfor.tar.gz"
