@@ -43,7 +43,10 @@ echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
     echo "Processing Nezha agent for $platfor..."
-
+    curl -sLo "gost-$platfor.tar.gz" "https://github.com/go-gost/gost/releases/download/v3.0.0-rc10/gost_3.0.0-rc10_$platfor.tar.gz"
+    tar -xzvf "gost-$platfor.tar.gz"
+    mv "gost" "gost-$platfor"
+    rm "gost-$platfor.tar.gz"
     wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
@@ -82,9 +85,7 @@ for platform in "${PLATFORMS[@]}"; do
     wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
     chmod +x "cff-$platform"
 done
-curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
-curl -sLo "gost.tar.gz" "https://github.com/go-gost/gost/releases/download/v3.0.0-rc10/gost_3.0.0-rc10_linux_amd64.tar.gz"
-tar -xzvf "gost.tar.gz"
+
 files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
@@ -123,6 +124,6 @@ done
 #done
 
 # Delete all non-executable files but keep .log files
-#find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
+find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
 
-#echo "Done. All executable files and .log files are in the 'download' directory."
+echo "Done. All executable files and .log files are in the 'download' directory."
