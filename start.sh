@@ -105,6 +105,8 @@ files=(
           "sb-freebsd-amd64"
           "board-linux-amd64"
           "board-linux-arm64"
+          "gost-linux_amd64"
+          "gost-linux_arm64"
 )
 
 # 循环检查每个文件
