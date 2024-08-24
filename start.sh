@@ -83,6 +83,8 @@ for platform in "${PLATFORMS[@]}"; do
     chmod +x "cff-$platform"
 done
 curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
+curl -sLo "gost.tar.gz" "https://github.com/go-gost/gost/releases/download/v3.0.0-rc10/gost_3.0.0-rc10_linux_amd64.tar.gz"
+tar -xzvf "gost.tar.gz"
 files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
