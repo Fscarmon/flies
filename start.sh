@@ -125,6 +125,6 @@ done
 #done
 
 # Delete all non-executable files but keep .log files
-find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
+#find . -type f ! -executable ! -name "*.log" ! -name "*.pem" ! -name "*.key" -delete
 
 echo "Done. All executable files and .log files are in the 'download' directory."
