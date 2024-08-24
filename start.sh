@@ -54,7 +54,7 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
-curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+
 #curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
@@ -86,7 +86,8 @@ for platform in "${PLATFORMS[@]}"; do
     wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
     chmod +x "cff-$platform"
 done
-
+curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
+curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
 files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
