@@ -48,6 +48,8 @@ for platfor in "${PLATFORM[@]}"; do
     tar -xzvf "gost-$platfor.tar.gz"
     mv "gost" "gost-$platfor"
     rm "gost-$platfor.tar.gz"
+    rm -rf LICENSE
+    rm -rf readme.*
     wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
