@@ -49,14 +49,14 @@ for platfor in "${PLATFORM[@]}"; do
     mv "gost" "gost-$platfor"
     rm "gost-$platfor.tar.gz"
     rm -rf LICENSE
-    rm -rf readme.*
+    rm -rf README.*
     wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
-
+echo "gost-${gost_ver}" > gost-${gost_ver}
 #curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
 echo "Downloading Xray..."
