@@ -40,7 +40,7 @@ for platform in "${PLATFORMS[@]}"; do
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
-    rm -rf "./nezha-panel-$platform
+    rm -rf "./nezha-panel-$platform"
 done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
