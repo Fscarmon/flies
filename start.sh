@@ -33,13 +33,14 @@ for platform in "${PLATFORMS[@]}"; do
     curl -sLo "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
     tar -xzvf "sb-$platform.tar.gz" -C "./"
     mv "./sing-box-${SB_VERSION}-$platform/sing-box" "./sb-$platform"
-    rm "sb-$platform.tar.gz"
-    rm "sing-box-${SB_VERSION}-$platform"
+    rm -rf "sb-$platform.tar.gz"
+    rm -rf "./sing-box-${SB_VERSION}-$platform"
     
     wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
+    rm -rf "./nezha-panel-$platform
 done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
@@ -71,7 +72,7 @@ if [ -n "$XRAY_VERSION" ]; then
         wget -q -O "Xray-$platform.zip" "https://github.com/XTLS/Xray-core/releases/download/${XRAY_VERSION}/Xray-$XRAY_PLATFORM.zip"
         unzip -j "Xray-$platform.zip" "xray" -d "."
         mv "xray" "web-$platform"
-        rm "Xray-$platform.zip"
+        rm -rf "Xray-$platform.zip"
     done
     echo "Xray-${XRAY_VERSION}" > "web-${XRAY_VERSION}.log"
 else
