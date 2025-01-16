@@ -32,8 +32,9 @@ for platform in "${PLATFORMS[@]}"; do
     echo "Processing Nezha panel for $platform..."
     curl -sLo "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
     tar -xzvf "sb-$platform.tar.gz" -C "./"
-    mv "./sing-box-${SB_VERSION}-$platform" "./sb-$platform"
+    mv "./sing-box-${SB_VERSION}-$platform/sing-box" "./sb-$platform"
     rm "sb-$platform.tar.gz"
+    rm "sing-box-${SB_VERSION}-$platform"
     
     wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
