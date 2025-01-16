@@ -1,8 +1,8 @@
 #!/bin/bash
 nez_ver="v0.15.5"
 nezboard_ver="v0.17.8"
-XRAY_VERSION="v24.12.31"
-SB_VERSION="1.10.0-alpha.28"
+XRAY_VERSION="v25.1.1"
+SB_VERSION="1.10.7"
 gost_ver="3.0.0-rc10"
 # Check and install necessary tools
 check_install() {
