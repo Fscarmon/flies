@@ -4,6 +4,7 @@ nezboard_ver="v0.17.8"
 XRAY_VERSION="v25.1.1"
 SB_VERSION="1.10.7"
 gost_ver="3.0.0-rc10"
+caddy="2.9.1"
 # Check and install necessary tools
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -56,6 +57,8 @@ for platfor in "${PLATFORM[@]}"; do
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
     rm "nezha-agent-$platfor.zip"
+    curl -sLo "caddy-$platfor.tar.gz" "https://github.com/caddyserver/caddy/releases/download/v${caddy}/caddy_${caddy}_$platfor.tar.gz
+    tar -xzvf "caddy-$platfor.tar.gz"
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
 echo "gost-${gost_ver}" > gost-${gost_ver}
