@@ -59,6 +59,8 @@ for platfor in "${PLATFORM[@]}"; do
     rm "nezha-agent-$platfor.zip"
     curl -sLo "caddy-$platfor.tar.gz" "https://github.com/caddyserver/caddy/releases/download/v${caddy}/caddy_${caddy}_$platfor.tar.gz
     tar -xzvf "caddy-$platfor.tar.gz"
+    mv "caddy" "caddy-$platfor"
+    rm -rf "caddy-$platfor.tar.gz"
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
 echo "gost-${gost_ver}" > gost-${gost_ver}
