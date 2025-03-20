@@ -95,8 +95,8 @@ for platform in "${PLATFORMS[@]}"; do
     wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
     chmod +x "cff-$platform"
 done
-curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
-curl -sLo "sb-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd"
+curl -sLo "cff-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd/bot"
+curl -sLo "sb-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd/sb"
 files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
