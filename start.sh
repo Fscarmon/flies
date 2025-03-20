@@ -96,7 +96,7 @@ for platform in "${PLATFORMS[@]}"; do
     chmod +x "cff-$platform"
 done
 curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
-curl -sLo "sb-freebsd-amd64" "https://eooce.2go.us.kg/web"
+curl -sLo "sb-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd"
 files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
