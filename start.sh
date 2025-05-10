@@ -62,8 +62,8 @@ for platfor in "${PLATFORM[@]}"; do
     rm -rf "caddy-$platfor.tar.gz"
     wget -q https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz
     tar -xf frp_${FRP_VERSION}_$platfor.tar.gz
-    cp frp_${FRP_VERSION}_$platfor/frps* ./frps-$platfor
-    cp frp_${FRP_VERSION}_$platfor/frpc* ./frpc-$platfor
+    mv frp_${FRP_VERSION}_$platfor/frps* ./frps-$platfor
+    mv frp_${FRP_VERSION}_$platfor/frpc* ./frpc-$platfor
     rm -rf frp_${FRP_VERSION}_$platfor*
     rm -rf LICENSE
     rm -rf README*.*
