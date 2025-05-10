@@ -5,6 +5,7 @@ XRAY_VERSION="v25.3.6"
 SB_VERSION="1.10.7"
 gost_ver="3.0.0-rc10"
 caddy="2.9.1"
+FRP_VERSION="0.62.1"
 # Check and install necessary tools
 check_install() {
     if ! command -v $1 &> /dev/null; then
@@ -61,8 +62,13 @@ for platfor in "${PLATFORM[@]}"; do
     tar -xzvf "caddy-$platfor.tar.gz"
     mv "caddy" "caddy-$platfor"
     rm -rf "caddy-$platfor.tar.gz"
+    wget -q https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz
+    tar -xf frp_${FRP_VERSION}_linux_amd64.tar.gz
+    cp frp_${FRP_VERSION}_linux_amd64/frps* ./
+    rm -rf frp_${FRP_VERSION}_linux_amd64*
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
+echo "frp-${FRP_VERSION}" > frp-${FRP_VERSION}.log
 echo "gost-${gost_ver}" > gost-${gost_ver}
 #curl -sLo "cff-freebsd-amd64" "https://eooce.2go.us.kg/bot"
 # Download Xray
