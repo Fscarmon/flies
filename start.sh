@@ -122,7 +122,7 @@ files=(
           "gost-linux_amd64"
           "gost-linux_arm64"
           "frps-linux_amd64"
-          "fps-linux_arm64"
+          "frps-linux_arm64"
           "frps-freebsd_arm64"
 )
 
