@@ -52,8 +52,6 @@ for platfor in "${PLATFORM[@]}"; do
     tar -xzvf "gost-$platfor.tar.gz"
     mv "gost" "gost-$platfor"
     rm "gost-$platfor.tar.gz"
-    rm -rf LICENSE
-    rm -rf README*.*
     wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
@@ -64,9 +62,11 @@ for platfor in "${PLATFORM[@]}"; do
     rm -rf "caddy-$platfor.tar.gz"
     wget -q https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz
     tar -xf frp_${FRP_VERSION}_$platfor.tar.gz
-    cp frp_${FRP_VERSION}_$platfor/frps* ./
-    cp frp_${FRP_VERSION}_$platfor/frpc* ./
+    cp frp_${FRP_VERSION}_$platfor/frps* ./frps-$platfor
+    cp frp_${FRP_VERSION}_$platfor/frpc* ./frpc-$platfor
     rm -rf frp_${FRP_VERSION}_$platfor*
+    rm -rf LICENSE
+    rm -rf README*.*
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
 echo "frp-${FRP_VERSION}" > frp-${FRP_VERSION}.log
@@ -121,6 +121,9 @@ files=(
           "board-linux-arm64"
           "gost-linux_amd64"
           "gost-linux_arm64"
+          "frps-linux_amd64"
+          "fps-linux_arm64"
+          "frps-freebsd_arm64"
 )
 
 # 循环检查每个文件
