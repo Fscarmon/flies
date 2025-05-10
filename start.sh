@@ -63,9 +63,10 @@ for platfor in "${PLATFORM[@]}"; do
     mv "caddy" "caddy-$platfor"
     rm -rf "caddy-$platfor.tar.gz"
     wget -q https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz
-    tar -xf frp_${FRP_VERSION}_linux_amd64.tar.gz
-    cp frp_${FRP_VERSION}_linux_amd64/frps* ./
-    rm -rf frp_${FRP_VERSION}_linux_amd64*
+    tar -xf frp_${FRP_VERSION}_$platfor.tar.gz
+    cp frp_${FRP_VERSION}_$platfor/frps* ./
+    cp frp_${FRP_VERSION}_$platfor/frpc* ./
+    rm -rf frp_${FRP_VERSION}_$platfor*
 done
 echo "agent-${nez_ver}" > agent-${nez_ver}.log
 echo "frp-${FRP_VERSION}" > frp-${FRP_VERSION}.log
