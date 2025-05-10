@@ -38,6 +38,9 @@ jobs:
           "board-linux-arm64"
           "gost-linux_amd64"
           "gost-linux_arm64"
+          "frps-linux_amd64"
+          "frps-linux_arm64"
+          "frps-freebsd_amd64"
         )
         
         missing_files=0
