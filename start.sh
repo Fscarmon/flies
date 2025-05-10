@@ -60,7 +60,7 @@ for platfor in "${PLATFORM[@]}"; do
     tar -xzvf "caddy-$platfor.tar.gz"
     mv "caddy" "caddy-$platfor"
     rm -rf "caddy-$platfor.tar.gz"
-    wget -q https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz
+    wget -q -O "frp_${FRP_VERSION}_$platfor.tar.gz" "https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_$platfor.tar.gz"
     tar -xf frp_${FRP_VERSION}_$platfor.tar.gz
     mv frp_${FRP_VERSION}_$platfor/frps* ./frps-$platfor
     mv frp_${FRP_VERSION}_$platfor/frpc* ./frpc-$platfor
