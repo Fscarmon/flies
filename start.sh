@@ -33,7 +33,7 @@ PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 for platform in "${PLATFORMS[@]}"; do
     wget https://github.com/fmnx/cftun/releases/download/v2.1.0/cftun-$platform.tar.gz
     tar zxvf cftun-$platform.tar.gz
-
+    rm -rf "./cftun-$platform.tar.gz"
     echo "Processing Nezha panel for $platform..."
     curl -sLo "sb-$platform.tar.gz" "https://github.com/SagerNet/sing-box/releases/download/v${SB_VERSION}/sing-box-${SB_VERSION}-${platform}.tar.gz"
     tar -xzvf "sb-$platform.tar.gz" -C "./"
