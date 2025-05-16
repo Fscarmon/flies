@@ -51,8 +51,11 @@ done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
 for platfor in "${PLATFORM[@]}"; do
-     https://github.com/yosebyte/nodepass/releases/download/v${ND_VERSION}/nodepass_${ND_VERSION}_$platfor.tar.gz
-    echo "Processing Nezha agent for $platfor..."
+     curl -sLo "nodepass_${ND_VERSION}_$platfor.tar.gz" "https://github.com/yosebyte/nodepass/releases/download/v${ND_VERSION}/nodepass_${ND_VERSION}_$platfor.tar.gz"
+   tar -xzvf "nodepass_${ND_VERSION}_$platfor.tar.gz"
+    mv "nodepass" "nodepass-$platfor"
+    rm "nodepass_${ND_VERSION}_$platfor.tar.gz"
+ echo "Processing Nezha agent for $platfor..."
     curl -sLo "gost-$platfor.tar.gz" "https://github.com/go-gost/gost/releases/download/v${gost_ver}/gost_${gost_ver}_$platfor.tar.gz"
     tar -xzvf "gost-$platfor.tar.gz"
     mv "gost" "gost-$platfor"
