@@ -24,6 +24,7 @@ jobs:
         required_files=(
           "agent-freebsd_amd64"
           "agent-linux_amd64"
+          "agent2-linux_amd64"
           "agent-linux_arm64"
           "cff-linux-amd64"
           "cff-linux-arm64"
@@ -35,6 +36,7 @@ jobs:
           "sb-linux-arm64"
           "sb-freebsd-amd64"
           "board-linux-amd64"
+          "board2-linux-amd64"
           "board-linux-arm64"
           "gost-linux_amd64"
           "gost-linux_arm64"
