@@ -1,5 +1,6 @@
 #!/bin/bash
 nez_ver="v0.15.5"
+nezboard_ver2="v1.12.2"
 nezboard_ver="v0.17.8"
 XRAY_VERSION="v25.3.6"
 SB_VERSION="1.10.7"
@@ -47,6 +48,11 @@ for platform in "${PLATFORMS[@]}"; do
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
     rm -rf "./nezha-panel-$platform"
+    wget -q -O "nezha-panel2-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver2}/dashboard-$platform.zip"
+    unzip -o "nezha-panel2-$platform.zip" -d "nezha-panel2-$platform"
+    mv "./nezha-panel2-$platform/dist/dashboard2-$platform" "./board2-$platform"
+    rm -rf "./nezha-panel2-$platform" "nezha-panel2-$platform.zip"
+    rm -rf "./nezha-panel2-$platform"
 done
 echo "board-${nezboard_ver}" > board-${nezboard_ver}.log
 echo "sb-${SB_VERSION}" > sb-${SB_VERSION}.log
