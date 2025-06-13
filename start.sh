@@ -1,6 +1,7 @@
 #!/bin/bash
 nez_ver="v0.15.5"
-nezboard_ver2="v1.12.2"
+nez_ver2="v1.12.2"
+nezboard_ver2="v1.12.4"
 nezboard_ver="v0.17.8"
 XRAY_VERSION="v25.3.6"
 SB_VERSION="1.10.7"
@@ -77,6 +78,9 @@ for platfor in "${PLATFORM[@]}"; do
     wget -q -O "nezha-agent-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver}/nezha-agent_$platfor.zip"
     unzip -j "nezha-agent-$platfor.zip" "nezha-agent" -d "."
     mv "nezha-agent" "agent-$platfor"
+    wget -q -O "nezha-agent2-$platfor.zip" "https://github.com/nezhahq/agent/releases/download/${nez_ver2}/nezha-agent_$platfor.zip"
+    unzip -j "nezha-agent2-$platfor.zip" "nezha-agent" -d "."
+    mv "nezha-agent" "agent2-$platfor"
     rm "nezha-agent-$platfor.zip"
     curl -sLo "caddy-$platfor.tar.gz" "https://github.com/caddyserver/caddy/releases/download/v${caddy}/caddy_${caddy}_$platfor.tar.gz"
     tar -xzvf "caddy-$platfor.tar.gz"
