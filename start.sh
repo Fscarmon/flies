@@ -45,12 +45,20 @@ for platform in "${PLATFORMS[@]}"; do
     
     wget -q -O "nezha-panel-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver}/dashboard-$platform.zip"
     unzip -o "nezha-panel-$platform.zip" -d "nezha-panel-$platform"
+    if [ -s "./nezha-panel-$platform/dist/dashboard-$platform" ]; then
     mv "./nezha-panel-$platform/dist/dashboard-$platform" "./board-$platform"
+    else
+    mv "./nezha-panel-$platform/dashboard-$platform" "./board-$platform"
+    fi
     rm -rf "./nezha-panel-$platform" "nezha-panel-$platform.zip"
     rm -rf "./nezha-panel-$platform"
     wget -q -O "nezha-panel2-$platform.zip" "https://github.com/naiba/nezha/releases/download/${nezboard_ver2}/dashboard-$platform.zip"
     unzip -o "nezha-panel2-$platform.zip" -d "nezha-panel2-$platform"
-    mv "./nezha-panel2-$platform/dist/dashboard2-$platform" "./board2-$platform"
+    if [ -s "./nezha-panel2-$platform/dist/dashboard-$platform" ]; then
+    mv "./nezha-panel2-$platform/dist/dashboard-$platform" "./board2-$platform"
+    else
+    mv "./nezha-panel2-$platform/dashboard-$platform" "./board2-$platform"
+    fi
     rm -rf "./nezha-panel2-$platform" "nezha-panel2-$platform.zip"
     rm -rf "./nezha-panel2-$platform"
 done
