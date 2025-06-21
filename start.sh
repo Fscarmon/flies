@@ -1,7 +1,7 @@
 #!/bin/bash
 nez_ver="v0.15.5"
-nez_ver2="v1.12.2"
-nezboard_ver2="v1.12.4"
+nez_ver2="v1.13.0"
+nezboard_ver2="v1.13.0"
 nezboard_ver="v0.17.8"
 XRAY_VERSION="v25.3.6"
 SB_VERSION="1.10.7"
