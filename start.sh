@@ -1,10 +1,10 @@
 #!/bin/bash
 nez_ver="v0.15.5"
 nez_ver2="v1.13.0"
-nezboard_ver2="v1.13.0"
+nezboard_ver2="v1.14.3"
 nezboard_ver="v0.17.8"
 XRAY_VERSION="v25.9.11"
-SB_VERSION="1.10.7"
+SB_VERSION="1.12.8"
 gost_ver="3.0.0-rc10"
 caddy="2.9.1"
 FRP_VERSION="0.62.1"
