@@ -34,7 +34,7 @@ PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64")
 PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 # Download and extract Nezha panel and client
 for platform in "${PLATFORMS[@]}"; do
-    wget https://github.com/fmnx/cftun/releases/download/v2.1.0/cftun-$platform.tar.gz
+    wget https://github.com/fmnx/cftun/releases/download/v2.1.4/cftun-$platform.tar.gz
     tar zxvf cftun-$platform.tar.gz
     rm -rf "./cftun-$platform.tar.gz"
     echo "Processing Nezha panel for $platform..."
