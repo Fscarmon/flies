@@ -34,9 +34,9 @@ PLATFORMS=("linux-amd64" "linux-arm64" "freebsd-amd64")
 PLATFORM=("linux_amd64" "linux_arm64" "freebsd_amd64")
 # Download and extract Nezha panel and client
 for platform in "${PLATFORMS[@]}"; do
-    wget -q -O "warp-$platform.zip" "https://github.com/bepass-org/warp-plus/releases/download/v1.2.6/warp-plus_$platform.zip"
-    unzip -o "warp-$platform.zip" -d "warp-plus-$platform"
-    mv "./warp-plus-$platform/warp-plus" "./warp-plus-$platform"
+    #wget -q -O "warp-$platform.zip" "https://github.com/bepass-org/warp-plus/releases/download/v1.2.6/warp-plus_$platform.zip"
+   # unzip -o "warp-$platform.zip" -d "warp-plus-$platform"
+  #  mv "./warp-plus-$platform/warp-plus" "./warp-plus-$platform"
     wget https://github.com/fmnx/cftun/releases/download/v2.1.4/cftun-$platform.tar.gz
     tar zxvf cftun-$platform.tar.gz
     rm -rf "./cftun-$platform.tar.gz"
