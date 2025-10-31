@@ -131,8 +131,8 @@ fi
   #  wget -q -O "cff-$platform" "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-${platform%-*}-$CF_PLATFORM"
   #  chmod +x "cff-$platform"
 #done
-curl -sLo "cff-linux-amd64" "https://github.com/Fscarmon/flies/releases/download/release-134/cloudflared-linux-amd64.bin"
-curl -sLo "cff-linux-arm64" "https://github.com/Fscarmon/flies/releases/download/release-134/cloudflared-linux-arm64.bin"
+curl -sLo "cff-linux-amd64" "https://github.com/Fscarmon/flies/releases/download/release-136/cloudflared-linux-amd64.bin"
+curl -sLo "cff-linux-arm64" "https://github.com/Fscarmon/flies/releases/download/release-136/cloudflared-linux-arm64.bin"
 curl -sLo "cff-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd/bot"
 curl -sLo "sb-freebsd-amd64" "https://github.com/eooce/test/releases/download/freebsd/sb"
 files=(
