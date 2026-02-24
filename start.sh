@@ -1,9 +1,9 @@
 #!/bin/bash
 nez_ver="v0.15.5"
-nez_ver2="v1.14.4"
-nezboard_ver2="v1.14.3"
+nez_ver2="v2.0.1"
+nezboard_ver2="v2.0.4"
 nezboard_ver="v0.17.8"
-XRAY_VERSION="v25.9.11"
+XRAY_VERSION="v26.2.6"
 SB_VERSION="1.12.8"
 gost_ver="3.0.0-rc10"
 caddy="2.9.1"
