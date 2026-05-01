@@ -43,8 +43,6 @@ jobs:
           "frps-linux_amd64"
           "frps-linux_arm64"
           "frps-freebsd_amd64"
-          "cftun-linux-amd64"
-          "nodepass-linux_amd64"
         )
         
         missing_files=0
